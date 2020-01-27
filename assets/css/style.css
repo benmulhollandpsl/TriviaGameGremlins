@@ -1,1 +1,10 @@
 /* will add CSS styling but will comment it out until after functioning game works -1/25 */
+
+
+body {
+    background: url(/assets/images/gremlin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }

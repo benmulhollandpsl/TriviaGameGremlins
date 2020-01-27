@@ -103,8 +103,57 @@ $.fn.trivia = function() {   //binds a function to document.readyState
 gizmoGame.ask= function() {
     if (gizmoGame.questions[gizmoGame.current]) {
         $("#timer").html("Time Remaining: " + "00:" + gizmoGame.count + " seconds");
-        $("qeustion_div").html(gizmoGame.questions[ThisThing.current].question);
+        $("question_div").html(gizmoGame.questions[gizmoGame.current].question);
+        var choicesArray = gizmoGame.questions[gizmoGame.current].choices;
+        var buttonsArray = [];
+
+
+        for (var i=0; i < choicesArray.length; i++)  {
+            var button = $('<button>');
+            button.text(choicesArray[i]);
+            button.attr('data-id', i);
+            ${'choices_div').append(button);
+        }
+
+        window.triviaCounter = setInterval(gizmoGame.timer, 1000); 
+        //1000 is a second
+        
+        }
+        else {
+        $('.card-body').append($('<div />', {
+            text: 'TimeOut: ' + (
+                gizmoGame.questions.length - (gizmoGame.answers.correct + gizmoGame.answers.incorrect)),
+                class: 'result'
+        })); 
+        $('#start_button').text('Restart').appendTo('.card-body').show();
+        }
+
+
+        }
         //create varioable for choice and button within timer 
+            //timer
+        gizmoGame.timer = function() {
+            gizmoGame.count--; 
+            if (gizmoGame.count <= 0){
+                setTimeout(function() { gizmoGame.nextQuestion();
+                });
+
+            }
+            else {
+                $("#timer").html("Time remaining: " + "00:" + gizmoGame.count + " seconds");
+
+console.log(print[gizmoGame])
+            }
+        };
+
+            //next question function
+
+        // clean up and show answers
+
+    // make sure prints to screen not console.log
+
+
+
 
 
     } 
