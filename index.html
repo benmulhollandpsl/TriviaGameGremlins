@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gremlins Trivia Quiz!!!</title>
     <!-- libraries and tags
     css reset
     boot strap -->
         <!-- copy paste more of instructions in here, focusing on HTML tomorrow morning, then back to js timer 1/25/20 -->
+        <!-- I'm missing something in my code, I broke something somewhere while doing a multiline edit with alt click..  either a quote or a single quote? change fonts to green?-->
 
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">      
 <!-- Google fonts-->
 <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
 
@@ -24,14 +28,15 @@
     bootstrap container holding the timer questions, correct and incorrect etc
     js will have  -->
 <div class="container">
+    
     <div class="jumbotron align-center">
             <!--want to put gremlin pic here  1/26/20-->
         <h1 class="display-3 text-center">Don't Get Them Wet! Keep Them out of The Sunlight!<br>And Whatever You Do Don't Feed Them after....?</h1>
         <h2 class="display-6 text-center">I hope you enjoy this short quiz on Gremlins</h2>
         <h2 class="display-6 text-center">Answer the questions before the time runs out!</h2>
-        <h2 class="display-8 text-center">  blank for now  </h2>
-        <h2 class="display-8 text-center">  blank for now  </h2>   <!-- i like the space, but not sure if im done with my instructions yet 1/26/20-->
-        <h2 class="display-8 text-center">  blank for now  </h2>  <!-- im putting an image, or other instructions here 1/26/20-->
+        <hr class="display-8 text-center">
+        <h2>      </h2>    <!-- i like the space, but not sure if im done with my instructions yet 1/26/20 adding rule line-->
+        <button type="button" class="btn btn-warning btn-lg align-center" id="start_button">Test Your Mind!!</button>  <!-- changed this to start game 1/28/20-->
     </div>
 
 
@@ -41,12 +46,12 @@
     <div class="card" style="width: 80rem;">
         <div class="card-body text-primary">
 
-         <div id="timer"></div>
-         <div id="question_div"></div>
-          <div id="choices_div"></div>  
+        <div id="timer"></div>
+        <div id="question_div"></div>
+        <div id="choices_div"></div>  
         
-        <div id="correct"></div>
-        <div id="incorrect"></div>
+        <div class="correct"></div>
+        <div class="incorrect"></div>
         </div>
     
     </div>
@@ -54,9 +59,9 @@
 </div>
 
 <style>
-div {color: white; margin-bottom: 25px; font-family:Arial, Helvetica, sans-serif; font-size: 1.25em;}
-.correct, .incorrect {text-transform:capitalize;}
-.jumbotron {background-color:black}
+div {color:green; margin-bottom: 25px; font-family:Arial, Helvetica, sans-serif; font-size: 1.25em;}
+.correct, .incorrect {text-transform: capitalize;}
+.jumbotron {background-color:black;}
 </style>
 
 

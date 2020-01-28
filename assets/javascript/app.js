@@ -10,7 +10,7 @@
 
 //all trivia questions in trivia function
 
-$.fn.trivia = function() {   //$ binds a function to document.readyState
+    $.fn.trivia = function() {   //$ binds a function to document.readyState
     var gizmoGame = this;          //clicked var
     gizmoGame.userPick = null;          //captures answer
     gizmoGame.answers = {               
@@ -21,7 +21,7 @@ $.fn.trivia = function() {   //$ binds a function to document.readyState
 
     gizmoGame.images= null;//images will go here --1/25/20
     gizmoGame.count = 30;  //30 seconds count-down timer
-    gizmoGame.current = 0 //start array for next question
+    gizmoGame.current = 0; //start array for next question
 
     gizmoGame.questions = [ {
         quesion: "when don't feed em?",   //1
@@ -38,62 +38,62 @@ $.fn.trivia = function() {   //$ binds a function to document.readyState
 
     },{
 
-        question: "what mom did kill one in?"   ,    //3
-        choices: ["microwave", "blender", "mixer", "pelaton"],
+        question: "what mom didn't kill one in?"   ,    //3
+        choices: ["not a microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"   ,   //4
-        choices: ["microwave", "blender", "mixer", "pelaton"],
+        question: "Who is Stripe?"   ,   //4
+        choices: ["leading man", "plays in U2", "Leading Gremlin", "pelaton"],
+        correct: 2
+
+
+    },{
+
+        question: "Why is water bad?"   ,   //5
+        choices: ["balloon reproduction", "blender", "Stripe", "PEMDAS"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"   ,   //5
-        choices: ["microwave", "blender", "mixer", "pelaton"],
+        question: "Is Gremlins a Christmas Movie?"    ,  //6
+        choices: ["no", "no", "yes", "Not Sure"],
+        correct: 2
+
+
+    },{
+
+        question: "Who's on First?"    ,  //7
+        choices: ["I Don't Know's on Fourth", "blender", "mixer", "pelaTone"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"    ,  //6
-        choices: ["microwave", "blender", "mixer", "pelaton"],
-        correct: 0
+        question: "Movie Theater?"  ,    //8
+        choices: ["microwave", "popcorn", "really gross ending of a lot of Gremlins", "pelaton"],
+        correct: 2
 
 
     },{
 
-        question: "what mom did kill one in?"    ,  //7
-        choices: ["microwave", "blender", "mixer", "pelaton"],
-        correct: 0
+        question: "Who is the Voice of Mogwai?"   ,   //9
+        choices: ["Bobby", "Howie Mandel", "mixer", "pElaton"],
+        correct: 1
 
 
     },{
 
-        question: "what mom did kill one in?"  ,    //8
-        choices: ["microwave", "blender", "mixer", "pelaton"],
+        question: "How are you?"    ,  //10
+        choices: ["Gremlin-tastic", "February", "apples", "Pelaton"],
         correct: 0
 
 
-    },{
-
-        question: "what mom did kill one in?"   ,   //9
-        choices: ["microwave", "blender", "mixer", "pelaton"],
-        correct: 0
-
-
-    },{
-
-        question: "what mom did kill one in?"    ,  //10
-        choices: ["microwave", "blender", "mixer", "pelaton"],
-        correct: 0
-
-
-            //need to actually write real questions in here 1/25/20
-    }
+            //need to actually write real questions in here 1/25/20-- sort of did 1/28
+    },
 
 
     //going to code out 2 questions and see what I get in console etc-1/25/20 nevermind debugger is helping
@@ -130,7 +130,7 @@ gizmoGame.ask= function() {
         }
 
 
-        }
+        };
         //create varioable for choice and button within timer 
             //timer
         gizmoGame.timer = function() {
@@ -149,7 +149,7 @@ gizmoGame.ask= function() {
 
         gizmoGame.nextQuestion = function() {
             gizmoGame.current++;
-            clearInterval(window.triviaCounter)
+            clearInterval(window.triviaCounter);
             gizmoGame.count = 30;
             $('#timer').html("");
             setTimeout(function() 
@@ -192,12 +192,8 @@ gizmoGame.ask= function() {
 //choices div on click function what kind of button? 1/27/20
 
 
-
-     
     // else {}
 
-
-    
 
 
 // timer here countdown { if  <== 0 timeoutFunction remember 1000 is a second
@@ -206,26 +202,21 @@ gizmoGame.ask= function() {
 
 
 
-
-
-
-
 //end of functions, pretty much end of entire js file? --no not end, will add something with a result to the end of previous objects.
 
 
 var Trivia;
 
-$("start_button").click(function() {
+$("#start_button").click(function() {
     $(this).hide()
     $('.result').remove();
 
     Trivia = new $(window).trivia();
     Trivia.ask();
-}
-                        );
+    });
 
-$('#choices_div').on('click', 'button', function(e) //do something
-    { var userPick = $(this).data("id"),
+$('#choices_div').on('click', 'button', function(e) { //do something
+    var userPick = $(this).data("id"),
     gizmoGame = Trivia || $(window).trivia(),
     index = gizmoGame.questions[gizmoGame.current].correct,
     correct = gizmoGame.questions[gizmoGame.current].choices[index];
@@ -238,7 +229,7 @@ $('#choices_div').on('click', 'button', function(e) //do something
         gizmoGame.answer(true);
 
     }
-    gizmoGame.nextQ();
+    gizmoGame.nextQuestion();
 
 
 
