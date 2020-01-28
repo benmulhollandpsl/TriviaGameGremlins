@@ -142,8 +142,40 @@ gizmoGame.ask= function() {
             else {
                 $("#timer").html("Time remaining: " + "00:" + gizmoGame.count + " seconds");
 
-console.log(print[gizmoGame])
+// console.log(print[gizmoGame])
             }
+        };
+
+        gizmoGame.nextQuestion = function() {
+            gizmoGame.current++;
+            clearInterval(window.triviaCounter)
+            gizmoGame.count = 30;
+            $('#timer').html("");
+            setTimeout(function() 
+            {
+                    gizmoGame.cleanUp();
+                    gizmoGame.ask();
+            }, 3000     )
+
+        };
+        gizmoGame.cleanUp = function() {
+            $('div[id]').each(function(item)
+            {
+                    $(this).html('');
+                    
+
+            }               );
+            $('.correct').html('Correct Answers: ' + gizmoGame.answers.correct);
+            $('.incorrect').html('Incorrect Answers: ' + gizmoGame.answers.incorrect);
+
+                                     };
+        gizmoGame.answer = function(correct) {
+            var string = correct ? 'correct' : "incorrect";  //console log to check return
+            gizmoGame.answers[string]++;
+            $('.' + string).html(stirng + ' answers: ' + gizmoGame.answers[string]);
+
+        };
+        return gizmoGame;
         };
 
             //next question function
