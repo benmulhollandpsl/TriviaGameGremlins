@@ -9,12 +9,13 @@
 // where do i put my questions in the js file.  following what Ross and Heater talked about during office hours Saturday.
 
 //all trivia questions in trivia function
-$.fn.trivia = function() {   //binds a function to document.readyState
-    var gizmoGame = this;
-    gizmoGame.userPick = null;
-    gizmoGame.answers = {
-        correct: 0
-        incorrect: 0
+
+$.fn.trivia = function() {   //$ binds a function to document.readyState
+    var gizmoGame = this;          //clicked var
+    gizmoGame.userPick = null;          //captures answer
+    gizmoGame.answers = {               
+        correct: 0,
+        incorrect: 0            //result counter
 
     };
 
@@ -22,8 +23,8 @@ $.fn.trivia = function() {   //binds a function to document.readyState
     gizmoGame.count = 30;  //30 seconds count-down timer
     gizmoGame.current = 0 //start array for next question
 
-    gizmoGame.questions = [{
-        quesion: "when don't feed em?"   //1
+    gizmoGame.questions = [ {
+        quesion: "when don't feed em?",   //1
         choices: ["high noon", "midnight","4:20","2:30"],
         correct: 1 //0-3 will be correct answer, could have a joke answer be something else too
     //pretty much this array for each question
@@ -31,62 +32,62 @@ $.fn.trivia = function() {   //binds a function to document.readyState
     },{
     // console.log(gizmoGame) 
 
-        question: "what mom did kill one in?"      //2
+        question: "what mom did kill one in?",      //2
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
     },{
 
-        question: "what mom did kill one in?"      //3
-        choices: ["microwave", "blender", "mixer", "pelaton"],
-        correct: 0
-
-
-    },{
-
-        question: "what mom did kill one in?"      //4
+        question: "what mom did kill one in?"   ,    //3
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"      //5
+        question: "what mom did kill one in?"   ,   //4
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"      //6
+        question: "what mom did kill one in?"   ,   //5
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"      //7
+        question: "what mom did kill one in?"    ,  //6
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"      //8
+        question: "what mom did kill one in?"    ,  //7
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"      //9
+        question: "what mom did kill one in?"  ,    //8
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
 
     },{
 
-        question: "what mom did kill one in?"      //10
+        question: "what mom did kill one in?"   ,   //9
+        choices: ["microwave", "blender", "mixer", "pelaton"],
+        correct: 0
+
+
+    },{
+
+        question: "what mom did kill one in?"    ,  //10
         choices: ["microwave", "blender", "mixer", "pelaton"],
         correct: 0
 
@@ -108,11 +109,11 @@ gizmoGame.ask= function() {
         var buttonsArray = [];
 
 
-        for (var i=0; i < choicesArray.length; i++)  {
+        for (var i = 0; i < choicesArray.length; i++)  {
             var button = $('<button>');
             button.text(choicesArray[i]);
             button.attr('data-id', i);
-            ${'choices_div').append(button);
+            $('#choices_div').append(button);
         }
 
         window.triviaCounter = setInterval(gizmoGame.timer, 1000); 
@@ -178,22 +179,26 @@ gizmoGame.ask= function() {
         return gizmoGame;
         };
 
+
+        //gizmoGame is finished.
+
+       
             //next question function
 
         // clean up and show answers
 
     // make sure prints to screen not console.log
 
+//choices div on click function what kind of button? 1/27/20
 
 
 
-
-    } 
+     
     // else {}
 
 
     
-}
+
 
 // timer here countdown { if  <== 0 timeoutFunction remember 1000 is a second
 
@@ -205,7 +210,40 @@ gizmoGame.ask= function() {
 
 
 
-}//end of functions, pretty much end of entire js file? --no not end, will add something with a result to the end of previous objects.
+//end of functions, pretty much end of entire js file? --no not end, will add something with a result to the end of previous objects.
 
 
- 
+var Trivia;
+
+$("start_button").click(function() {
+    $(this).hide()
+    $('.result').remove();
+
+    Trivia = new $(window).trivia();
+    Trivia.ask();
+}
+                        );
+
+$('#choices_div').on('click', 'button', function(e) //do something
+    { var userPick = $(this).data("id"),
+    gizmoGame = Trivia || $(window).trivia(),
+    index = gizmoGame.questions[gizmoGame.current].correct,
+    correct = gizmoGame.questions[gizmoGame.current].choices[index];
+
+    if (userPick !== index) {
+        $('#choices_div').text("Wrong! The Correct Choice Was: " + correct);
+        gizmoGame.answers(false);
+    } else {
+        $('#choices_div').text("Correct! That is the Right Answer: " + correct);
+        gizmoGame.answer(true);
+
+    }
+    gizmoGame.nextQ();
+
+
+
+
+
+});
+
+
