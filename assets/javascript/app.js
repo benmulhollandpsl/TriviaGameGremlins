@@ -19,7 +19,6 @@
 
     };
 
-    gizmoGame.images= null;//images will go here --1/25/20
     gizmoGame.count = 30;  //30 seconds count-down timer
     gizmoGame.current = 0; //start array for next question
 
@@ -104,7 +103,7 @@
 gizmoGame.ask= function() {
     if (gizmoGame.questions[gizmoGame.current]) {
         $("#timer").html("Time Remaining: " + "00:" + gizmoGame.count + " seconds");
-        $("question_div").html(gizmoGame.questions[gizmoGame.current].question);
+        $("#question_div").html(gizmoGame.questions[gizmoGame.current].question);
         var choicesArray = gizmoGame.questions[gizmoGame.current].choices;
         var buttonsArray = [];
 
@@ -136,7 +135,7 @@ gizmoGame.ask= function() {
         gizmoGame.timer = function() {
             gizmoGame.count--; 
             if (gizmoGame.count <= 0){
-                setTimeout(function() { gizmoGame.nextQuestion();
+                setTimeout(function() {gizmoGame.nextQuestion();
                 });
 
             }
@@ -173,7 +172,7 @@ gizmoGame.ask= function() {
         gizmoGame.answer = function(correct) {
             var string = correct ? 'correct' : "incorrect";  //console log to check return
             gizmoGame.answers[string]++;
-            $('.' + string).html(stirng + ' answers: ' + gizmoGame.answers[string]);
+            $('.' + string).html(string + ' answers: ' + gizmoGame.answers[string]);
 
         };
         return gizmoGame;
